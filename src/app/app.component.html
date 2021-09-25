@@ -1,0 +1,28 @@
+<nav>
+  <a class="button" routerLink="/pie-chart" routerLinkActive="activebutton">Pie Chart</a> |
+  <a class="button" routerLink="/area-chart" routerLinkActive="activebutton">Area Chart</a>
+  <a class="button" routerLink="/line-chart" routerLinkActive="activebutton">Line Chart</a>
+  <a class="button" routerLink="/bullet-chart" routerLinkActive="activebutton">Bullet Chart</a>
+  <a class="button" routerLink="/column-chart" routerLinkActive="activebutton">Column Chart</a>
+</nav>
+<router-outlet></router-outlet>
+
+<div style="display: none;">
+<!-- This HTML represents the initial state for the tutorial. It is not intended to appear in the app. -->
+<app-pie-chart></app-pie-chart>
+<app-area-chart></app-area-chart>
+<app-line-chart></app-line-chart>
+<app-bullet-chart></app-bullet-chart>
+<app-column-chart></app-column-chart>
+
+<!-- This HTML snippet is for when the user first adds the routerlink navigation. -->
+<nav>
+  <a class="button" routerLink="/pie-chart">Pie Chart</a> |
+  <a class="button" routerLink="/area-chart">Area Chart</a>
+  <a class="button" routerLink="/line-chart">Line Chart</a>
+  <a class="button" routerLink="/bullet-chart">Bullet Chart</a>
+  <a class="button" routerLink="/column-chart">Column Chart</a>
+</nav>
+
+
+</div>
