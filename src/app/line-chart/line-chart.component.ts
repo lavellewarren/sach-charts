@@ -11,54 +11,115 @@ let rawData = [
     ], [
         [1200, 1300, 2000, 2300, null, null, null, null],
         [null, null, null, 2300, null, null, null, 2700],
-        [null, null, null, 2500, null, null, null, null],
-        [null, null, null, 2500, null, null, null, 1800],
-        [null, null, null, 2500, null, null, null, 2000]
+        [],
+        [null, null, null, 2300, null, null, null, 1800],
+        [null, null, null, 2300, null, null, null, 2000]
     ], [
         [1800, 1300, 2000, 2500, null, null, null, null],
         [null, null, null, 2500, null, null, null, 2300],
-        [null, null, null, 2200, null, null, null, null],
-        [null, null, null, 2200, null, null, null, 3000],
-        [null, null, null, 2200, null, null, null, 1500]
+        [],
+        [null, null, null, 2500, null, null, null, 3000],
+        [null, null, null, 2500, null, null, null, 1500]
     ],
 ];
 
 let yearStart = [2010, 2020, 2030];
 
-let seriesMetaData : Array<Highcharts.SeriesLineOptions> = [
-    {
-        type: "line",
-        name: 'Issuer Historic',
-        color: '#bb40ba',
-        dashStyle: 'Solid'
-    }, {
-        type: 'line',
-        name: 'Issuer Projection',
-        color: '#bb40ba',
-        dashStyle: 'Dash'
-    }, {
-        type: 'line',
-        name: 'Oil & Gas Median',
-        color: '#4098ef',
-        marker: {
-            enabled: true,
-            width: 50,
-            height: 50,
-            radius: 6,
-            symbol: 'circle'
-        },
-        dashStyle: 'Solid'
-    }, {
-        type: 'line',
-        name: '2\'C Gas Production Benchmark',
-        color: '#bbd084',
-        dashStyle: 'Dash'
-    }, {
-        type: 'line',
-        name: '4\'C Gas Production Benchmark',
-        color: '#eb5b2a',
-        dashStyle: 'Dash'
-    }
+let yAxisTitleData = [
+    "S1 + S2 tCO2eq / $M",
+    "Annual Oil Production (MMBbls)",
+    "Gas Production (BCF)"
+];
+
+let seriesMetaData : Array<Array<Highcharts.SeriesLineOptions>> =[
+    [
+        {
+            type: "line",
+            name: 'Issuer Historic',
+            color: '#bb40ba',
+            dashStyle: 'Solid'
+        }, {
+            type: 'line',
+            name: 'Issuer Projection',
+            color: '#bb40ba',
+            dashStyle: 'Dash'
+        }, {
+            type: 'line',
+            name: 'Oil & Gas Median',
+            color: '#4098ef',
+            marker: {
+                enabled: true,
+                width: 50,
+                height: 50,
+                radius: 6,
+                symbol: 'circle'
+            },
+            showInLegend: true,
+            dashStyle: 'Solid'
+        }, {
+            type: 'line',
+            name: '2°C Gas Production Benchmark',
+            color: '#bbd084',
+            dashStyle: 'Dash'
+        }, {
+            type: 'line',
+            name: '4°C Gas Production Benchmark',
+            color: '#eb5b2a',
+            dashStyle: 'Dash'
+        }
+    ], [
+        {
+            type: "line",
+            name: 'Oil Production Historic',
+            color: '#bb40ba',
+            dashStyle: 'Solid'
+        }, {
+            type: 'line',
+            name: 'Oil Production Projection',
+            color: '#bb40ba',
+            dashStyle: 'Dash'
+        }, {
+            type: 'line',
+            name: '',
+            showInLegend: false
+        }, {
+            type: 'line',
+            name: '2°C Oil Production Benchmark',
+            color: '#bbd084',
+            dashStyle: 'Dash'
+        }, {
+            type: 'line',
+            name: '4°C Oil Production Benchmark',
+            color: '#eb5b2a',
+            dashStyle: 'Dash'
+        }
+    ], [
+        {
+            type: "line",
+            name: 'Issuer Historic',
+            color: '#bb40ba',
+            dashStyle: 'Solid'
+        }, {
+            type: 'line',
+            name: 'Issuer Projection',
+            color: '#bb40ba',
+            dashStyle: 'Dash'
+        }, {
+            type: 'line',
+            name: '',
+            showInLegend: false
+        }, {
+            type: 'line',
+            name: '2°C Gas Production Benchmark',
+            color: '#bbd084',
+            dashStyle: 'Dash'
+        }, {
+            type: 'line',
+            name: '4°C Gas Production Benchmark',
+            color: '#eb5b2a',
+            dashStyle: 'Dash'
+        }
+    ],
 ];
 
 @Component({
@@ -70,12 +131,22 @@ let seriesMetaData : Array<Highcharts.SeriesLineOptions> = [
 export class LineChartComponent {
     Highcharts: typeof Highcharts = Highcharts;
     updateFlag = false;
+    chart!: Highcharts.Chart;
+    chartConstructor = "chart";
+    chartCallback: any;
     active_id : number = 0;
     initChart(type: number) {
         this.active_id = type;
-        this.chartOptions.series = seriesMetaData.map((one, idx) => {
+        this.chartOptions.series = seriesMetaData[type].map((one, idx) => {
             return {...one, data: rawData[type][idx].slice(), pointStart: yearStart[type]};
         });
+        if (this.chartOptions.yAxis != undefined) {
+            this.chartOptions.yAxis = {
+                title: {
+                    text: yAxisTitleData[type]
+                }
+            };
+        }
         this.updateFlag = true;
     }
     
@@ -84,11 +155,11 @@ export class LineChartComponent {
         text: 'Issuer Level Alignment Projection',
         align: 'left'
         },
-        yAxis: {
+        yAxis: [{
             title: {
                 text: 'Gas Production (BCF)'
             }
-        },
+        }],
         xAxis: {
             accessibility: {
                 rangeDescription: 'Range: 2010 to 2017'
@@ -123,6 +194,12 @@ export class LineChartComponent {
     };
 
     constructor() {
+        const self = this;
+
+        this.chartCallback = (chart: Highcharts.Chart) => {
+            self.chart = chart;
+        };
+      
         this.initChart(0);
     }
 }

@@ -52,14 +52,14 @@ export class ColumnChartComponent {
 						let lineStyle3 = {'stroke-width': 1, fill: undefined, stroke: '#767d86', zIndex: 10};
 
 						ren.text("Year 2030", 20, 50).css(textStyle1).add();
-						ren.text("3.3°C", 55, 80).css(textStyle2).add();
-						ren.text("2°C", 64, 125).css(textStyle2).add();
-						ren.text("Paris", 56, 160).css(textStyle2).add();
-						ren.text("Agreement", 25, 180).css(textStyle2).add();
+						ren.text("3.3°C", 55, 97).css(textStyle2).add();
+						ren.text("2°C", 64, 128).css(textStyle2).add();
+						ren.text("Paris", 56, 152).css(textStyle2).add();
+						ren.text("Agreement", 25, 168).css(textStyle2).add();
 						ren.path(['M', 135, 135, 'L', 55, 135]).attr(lineStyle1).add();
-						ren.path(['M', 97, 165, 'L', 97, 177]).attr(lineStyle3).add();
-						ren.path(['M', 97, 177, 'L', 95, 174]).attr(lineStyle3).add();
-						ren.path(['M', 97, 177, 'L', 100, 174]).attr(lineStyle3).add();
+						ren.path(['M', 97, 155, 'L', 97, 167]).attr(lineStyle3).add();
+						ren.path(['M', 97, 167, 'L', 95, 164]).attr(lineStyle3).add();
+						ren.path(['M', 97, 167, 'L', 100, 164]).attr(lineStyle3).add();
 
 						let py = 43 + 17 * (5 - rawData[0]) / 0.5;
 						ren.text(rawData[0] + "°C", 155, py).css(textStyle3).add();
@@ -165,14 +165,14 @@ export class ColumnChartComponent {
 						let lineStyle3 = {'stroke-width': 1, fill: undefined, stroke: '#767d86', zIndex: 10};
 
 						ren.text("Year 2040", 20, 50).css(textStyle1).add();
-						ren.text("3.3°C", 55, 80).css(textStyle2).add();
-						ren.text("2°C", 64, 125).css(textStyle2).add();
-						ren.text("Paris", 56, 160).css(textStyle2).add();
-						ren.text("Agreement", 25, 180).css(textStyle2).add();
+						ren.text("3.3°C", 55, 97).css(textStyle2).add();
+						ren.text("2°C", 64, 128).css(textStyle2).add();
+						ren.text("Paris", 56, 152).css(textStyle2).add();
+						ren.text("Agreement", 25, 168).css(textStyle2).add();
 						ren.path(['M', 135, 135, 'L', 55, 135]).attr(lineStyle1).add();
-						ren.path(['M', 97, 165, 'L', 97, 177]).attr(lineStyle3).add();
-						ren.path(['M', 97, 177, 'L', 95, 174]).attr(lineStyle3).add();
-						ren.path(['M', 97, 177, 'L', 100, 174]).attr(lineStyle3).add();
+						ren.path(['M', 97, 155, 'L', 97, 167]).attr(lineStyle3).add();
+						ren.path(['M', 97, 167, 'L', 95, 164]).attr(lineStyle3).add();
+						ren.path(['M', 97, 167, 'L', 100, 164]).attr(lineStyle3).add();
 
 						let py = 43 + 17 * (5 - rawData[1]) / 0.5;
 						ren.text("Above " + rawData[1] + "°C", 155, py).css(textStyle3).add();
@@ -278,14 +278,14 @@ export class ColumnChartComponent {
 						let lineStyle3 = {'stroke-width': 1, fill: undefined, stroke: '#767d86', zIndex: 10};
 
 						ren.text("Year 2050", 20, 50).css(textStyle1).add();
-						ren.text("3.3°C", 55, 80).css(textStyle2).add();
-						ren.text("2°C", 64, 125).css(textStyle2).add();
-						ren.text("Paris", 56, 160).css(textStyle2).add();
-						ren.text("Agreement", 25, 180).css(textStyle2).add();
+						ren.text("3.3°C", 55, 97).css(textStyle2).add();
+						ren.text("2°C", 64, 128).css(textStyle2).add();
+						ren.text("Paris", 56, 152).css(textStyle2).add();
+						ren.text("Agreement", 25, 168).css(textStyle2).add();
 						ren.path(['M', 135, 135, 'L', 55, 135]).attr(lineStyle1).add();
-						ren.path(['M', 97, 165, 'L', 97, 177]).attr(lineStyle3).add();
-						ren.path(['M', 97, 177, 'L', 95, 174]).attr(lineStyle3).add();
-						ren.path(['M', 97, 177, 'L', 100, 174]).attr(lineStyle3).add();
+						ren.path(['M', 97, 155, 'L', 97, 167]).attr(lineStyle3).add();
+						ren.path(['M', 97, 167, 'L', 95, 164]).attr(lineStyle3).add();
+						ren.path(['M', 97, 167, 'L', 100, 164]).attr(lineStyle3).add();
 
 						let py = 43 + 17 * (5 - rawData[2]) / 0.5;
 						ren.text("Below " + rawData[2] + "°C", 155, py).css(textStyle3).add();
