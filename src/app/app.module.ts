@@ -15,6 +15,7 @@ import { AreaChartComponent } from './area-chart/area-chart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { BulletChartComponent } from './bullet-chart/bullet-chart.component';
+import { ColumnChartComponent } from './column-chart/column-chart.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BulletChartComponent } from './bullet-chart/bullet-chart.component';
     PageNotFoundComponent,
     LineChartComponent,
     BulletChartComponent,
+    ColumnChartComponent
   ],
   imports: [
     HighchartsChartModule,
@@ -34,6 +36,7 @@ import { BulletChartComponent } from './bullet-chart/bullet-chart.component';
       {path: 'area-chart', component: AreaChartComponent},
       {path: 'line-chart', component: LineChartComponent},
       {path: 'bullet-chart', component: BulletChartComponent},
+      {path: 'column-chart', component: ColumnChartComponent},
       {path: '', redirectTo: '/area-chart', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
