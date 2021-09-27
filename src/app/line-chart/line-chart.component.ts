@@ -5,18 +5,21 @@ let rawData = [
     [
         [1500, 2300, 2500, 2000, null, null, null, null],
         [null, null, null, 2000, null, null, null, 2100],
-        [null, null, null, 2000, null, null, null, 1800],
-        [null, null, null, 2000, null, null, null, 1200]
+        [null, null, null, 2300, null, null, null, null],
+        [null, null, null, 2300, null, null, null, 1800],
+        [null, null, null, 2300, null, null, null, 1200]
     ], [
         [1200, 1300, 2000, 2300, null, null, null, null],
         [null, null, null, 2300, null, null, null, 2700],
-        [null, null, null, 2300, null, null, null, 1800],
-        [null, null, null, 2300, null, null, null, 2000]
+        [null, null, null, 2500, null, null, null, null],
+        [null, null, null, 2500, null, null, null, 1800],
+        [null, null, null, 2500, null, null, null, 2000]
     ], [
         [1800, 1300, 2000, 2500, null, null, null, null],
         [null, null, null, 2500, null, null, null, 2300],
-        [null, null, null, 2500, null, null, null, 3000],
-        [null, null, null, 2500, null, null, null, 1500]
+        [null, null, null, 2200, null, null, null, null],
+        [null, null, null, 2200, null, null, null, 3000],
+        [null, null, null, 2200, null, null, null, 1500]
     ],
 ];
 
@@ -29,6 +32,18 @@ let seriesMetaData : Array<Highcharts.SeriesLineOptions> = [
         type: 'line',
         name: 'Issuer Projection',
         dashStyle: 'Dash'
+    }, {
+        type: 'line',
+        name: 'Oil & Gas Median',
+        color: '#4098ef',
+        marker: {
+            enabled: true,
+            width: 50,
+            height: 50,
+            radius: 6,
+            symbol: 'circle'
+        },
+        dashStyle: 'Solid'
     }, {
         type: 'line',
         name: '2\'C Gas Production Benchmark',
@@ -71,6 +86,17 @@ export class LineChartComponent {
         xAxis: {
             accessibility: {
                 rangeDescription: 'Range: 2010 to 2017'
+            }
+        },
+        tooltip: {
+            borderColor: '#dbdde1',
+            useHTML: true,
+            formatter: function() {
+                return '<div style="color:#767c86;line-height:1.5;">' + this.point.x + '</div>'
+                +'<div style="color:#555759;line-height:1.5;">' + this.series.name + '</div>'
+                +'<div style="color:#555759;font-weight:900;line-height:1.5;">' + this.point.y + 'tCO2eq/$M' + '</div>'
+                +'<div style="color:#555759;line-height:1.5;">Historical Avg Decarbonization Rate</div>'
+                +'<div style="color:#555759;line-height:1.5;">-1.5%</div>'
             }
         },
         plotOptions: {
