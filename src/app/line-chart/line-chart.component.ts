@@ -23,6 +23,8 @@ let rawData = [
     ],
 ];
 
+let yearStart = [2010, 2020, 2030];
+
 let seriesMetaData : Array<Highcharts.SeriesLineOptions> = [
     {
         type: "line",
@@ -68,7 +70,7 @@ export class LineChartComponent {
     initChart(type: number) {
         this.active_id = type;
         this.chartOptions.series = seriesMetaData.map((one, idx) => {
-            return {...one, data: rawData[type][idx].slice()};
+            return {...one, data: rawData[type][idx].slice(), pointStart: yearStart[type]};
         });
         this.updateFlag = true;
     }
@@ -104,7 +106,6 @@ export class LineChartComponent {
                 label: {
                     enabled: false
                 },
-                pointStart: 2015,
                 connectNulls: true,
                 marker: {
                     enabled: false
