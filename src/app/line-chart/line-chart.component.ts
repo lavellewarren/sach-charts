@@ -29,10 +29,12 @@ let seriesMetaData : Array<Highcharts.SeriesLineOptions> = [
     {
         type: "line",
         name: 'Issuer Historic',
+        color: '#bb40ba',
         dashStyle: 'Solid'
     }, {
         type: 'line',
         name: 'Issuer Projection',
+        color: '#bb40ba',
         dashStyle: 'Dash'
     }, {
         type: 'line',
@@ -49,10 +51,12 @@ let seriesMetaData : Array<Highcharts.SeriesLineOptions> = [
     }, {
         type: 'line',
         name: '2\'C Gas Production Benchmark',
+        color: '#bbd084',
         dashStyle: 'Dash'
     }, {
         type: 'line',
         name: '4\'C Gas Production Benchmark',
+        color: '#eb5b2a',
         dashStyle: 'Dash'
     }
 ];
@@ -111,6 +115,9 @@ export class LineChartComponent {
                     enabled: false
                 }
             }
+        },
+        credits: {
+            enabled: false
         },
         series: []
     };
