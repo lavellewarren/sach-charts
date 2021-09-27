@@ -1,6 +1,13 @@
+<nav>
+<a class="button" [class]="active_id == 0 ? 'active' : ''" (click)="initChart(0)">Scope 1&2 Projection</a>
+<a class="button" [class]="active_id == 1 ? 'active' : ''" (click)="initChart(1)">Oil Production</a>
+<a class="button" [class]="active_id == 2 ? 'active' : ''" (click)="initChart(2)">Gas Production</a>
+</nav>
+
 <highcharts-chart 
   [Highcharts]="Highcharts"
   [options]="chartOptions"
+  [(update)]="updateFlag"
 
   style="width: 100%; height: 400px; display: block;"
 ></highcharts-chart>
