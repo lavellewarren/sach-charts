@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import * as Highcharts from 'highcharts';
-import Highchartsbullet from 'highcharts/modules/bullet';
 
 @Component({
   selector: 'app-root',
